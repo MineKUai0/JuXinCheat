@@ -88,6 +88,7 @@
             </div>
             <div class="muted">{{ fmt(b.createdAt) }}</div>
           </div>
+          <button class="btn-ghost btn" @click="resetDevice(b.hwid)">重置密钥</button>
           <button class="btn-ghost btn" @click="unbanDevice(b.hwid)">解除</button>
         </div>
       </div>
@@ -511,6 +512,16 @@ async function banDevice() {
     await loadDeviceBans();
   } catch (e) {
     alert((e.response && e.response.data && e.response.data.message) || '封禁设备失败');
+  }
+}
+async function resetDevice(hwid) {
+  if (!confirm('重置该设备的客户端密钥？\n\n只用于用户删除客户端数据或更换系统导致密钥丢失，封禁记录不会解除。')) return;
+  try {
+    await api.post('/api/admin/device-reset', { hwid: hwid });
+    alert('设备密钥已重置，用户重新打开客户端即可重新登记');
+    await loadDeviceBans();
+  } catch (e) {
+    alert((e.response && e.response.data && e.response.data.message) || '重置设备密钥失败');
   }
 }
 async function unbanDevice(hwid) {
