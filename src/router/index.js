@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   { path: '/', component: () => import('../views/Downloads.vue') },
+  { path: '/client-login', component: () => import('../views/ClientBridge.vue') },
   { path: '/emergency', component: () => import('../views/EmergencyLogin.vue') },
   { path: '/admin-login', component: () => import('../views/AdminLogin.vue') },
   { path: '/admin', component: () => import('../views/AdminPanel.vue'), meta: { admin: true } },
@@ -19,7 +20,7 @@ const routes = [
 const router = createRouter({ history: createWebHistory(), routes });
 
 router.beforeEach((to) => {
-  if (to.path === '/' || to.path === '/emergency' || to.path === '/admin-login') return true;
+  if (to.path === '/' || to.path === '/client-login' || to.path === '/emergency' || to.path === '/admin-login') return true;
   const token = sessionStorage.getItem('token');
   if (!token || token !== sessionStorage.getItem('jxLegacyToken')) return '/';
 
