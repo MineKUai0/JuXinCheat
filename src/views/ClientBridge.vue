@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const params = new URLSearchParams(window.location.search);
 const state = params.get('state') || '';
@@ -37,7 +37,9 @@ const twoFactor = ref('');
 const requires2fa = ref(false);
 const busy = ref(false);
 const success = ref(false);
+const finished = ref(false);
 const error = ref('');
+let cancelSent = false;
 const lang = ref('zh');
 const copies = {
   zh: { title: '客户端登录', hint: '登录成功后会授权当前设备，请返回客户端。', account: '账号', password: '密码', twoFactor: '管理员动态验证码', login: '登录并授权', waiting: '正在登录…', success: '登录成功', successHint: '授权已完成，请返回客户端。', autoClose: '不要关闭客户端，它会自动获取登录凭证。', adminMode: '管理员登录', returnHint: '本页面只用于客户端授权登录。' },
@@ -49,7 +51,31 @@ const text = computed(() => copies[lang.value] || copies.zh);
 function setLocale(value) {
   lang.value = value === 'zh-TW' || value === 'en' ? value : 'zh';
 }
+function cancelLogin() {
+  if (finished.value || cancelSent || !state) return;
+  cancelSent = true;
+  const body = JSON.stringify({ state });
+  try {
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      if (navigator.sendBeacon('/api/client-auth/cancel', blob)) return;
+    }
+  } catch (e) {}
+  try {
+    fetch('/api/client-auth/cancel', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true
+    });
+  } catch (e) {}
+}
+function onPageHide() {
+  cancelLogin();
+}
 onMounted(async () => {
+  window.addEventListener('beforeunload', onPageHide);
+  window.addEventListener('pagehide', onPageHide);
   if (!state || !/^[a-f0-9]{16,128}$/i.test(state) || !/^[a-f0-9]{64}$/i.test(challenge)) {
     error.value = '登录链接已失效，请返回客户端重新发起登录。';
     return;
@@ -58,6 +84,10 @@ onMounted(async () => {
     const response = await fetch('/api/app/region', { headers: { Accept: 'application/json' } });
     if (response.ok) setLocale((await response.json()).locale);
   } catch (e) {}
+});
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', onPageHide);
+  window.removeEventListener('pagehide', onPageHide);
 });
 
 async function submit() {
@@ -92,6 +122,7 @@ async function submit() {
       return;
     }
     if (data.bridgeReady) {
+      finished.value = true;
       success.value = true;
       return;
     }
