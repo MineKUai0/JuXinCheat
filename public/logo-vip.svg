@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="巨信黑金 VIP">
+  <defs>
+    <linearGradient id="vip-gold" x1="42" y1="30" x2="160" y2="174" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6d4c10"/>
+      <stop offset=".34" stop-color="#d5aa49"/>
+      <stop offset=".62" stop-color="#f7e5a1"/>
+      <stop offset=".82" stop-color="#c99a36"/>
+      <stop offset="1" stop-color="#775416"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="48" fill="#080704"/>
+  <rect x="7" y="7" width="186" height="186" rx="42" fill="none" stroke="url(#vip-gold)" stroke-width="6"/>
+  <path d="M60 74l26 28 14-40 14 40 26-28-9 62H69z" fill="url(#vip-gold)" stroke="#f7e5a1" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="73" y="142" width="54" height="12" rx="6" fill="url(#vip-gold)"/>
+</svg>
