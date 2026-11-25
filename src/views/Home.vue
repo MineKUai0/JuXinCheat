@@ -25,6 +25,7 @@
       <div class="bottom">
         <div class="lang">
           <span @click="changeLang('zh')" :class="{ on: lang === 'zh' }">中</span>
+          <span @click="changeLang('zh-TW')" :class="{ on: lang === 'zh-TW' }">繁</span>
           <span @click="changeLang('en')" :class="{ on: lang === 'en' }">EN</span>
         </div>
         <a @click="settingsOpen = true">{{ t('settings') }}</a>
