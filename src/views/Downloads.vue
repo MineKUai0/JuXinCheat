@@ -81,7 +81,7 @@ const copy = {
     realtime: '实时消息', realtimeHint: '好友与群聊即时同步', vip: '黑金 VIP', vipHint: '专属身份与主题体验',
     native: '原生体验', nativeHint: '独立客户端更稳定', chooseDevice: '选择你的设备',
     officialPackage: '官方安装包 · 持续更新', desktop: '桌面端', windowsRequirement: '适用于 Windows 10 / 11 · 64 位',
-    windowsFeature1: '窗口化聊天与群聊', windowsFeature2: '实时消息与文件传输', downloadWindows: '下载 Windows EXE', downloadInstaller: '下载安装版（可选路径）',
+    windowsFeature1: '窗口化聊天与群聊', windowsFeature2: '实时消息与文件传输', downloadWindows: '下载 Windows EXE', downloadInstaller: '下载安装版（完整目录）',
     mobile: '移动端', androidRequirement: '适用于安卓手机与平板设备', androidFeature1: '随时随地保持联系',
     androidFeature2: '语音、图片与自定义表情', downloadAndroid: '下载 Android APK', androidRobot: 'Android 机器人',
     footer: '巨信 Cheat · 和好友即刻相连', more: '更多选项', emergency: '应急登录'
@@ -95,7 +95,7 @@ const copy = {
     realtime: '即時訊息', realtimeHint: '好友與群聊即時同步', vip: '黑金 VIP', vipHint: '專屬身份與主題體驗',
     native: '原生體驗', nativeHint: '獨立客戶端更穩定', chooseDevice: '選擇你的裝置',
     officialPackage: '官方安裝包 · 持續更新', desktop: '桌面端', windowsRequirement: '適用於 Windows 10 / 11 · 64 位',
-    windowsFeature1: '視窗化聊天與群聊', windowsFeature2: '即時訊息與檔案傳輸', downloadWindows: '下載 Windows EXE', downloadInstaller: '下載安裝版（可選路徑）',
+    windowsFeature1: '視窗化聊天與群聊', windowsFeature2: '即時訊息與檔案傳輸', downloadWindows: '下載 Windows EXE', downloadInstaller: '下載安裝版（完整目錄）',
     mobile: '移動端', androidRequirement: '適用於安卓手機與平板裝置', androidFeature1: '隨時隨地保持聯繫',
     androidFeature2: '語音、圖片與自訂表情', downloadAndroid: '下載 Android APK', androidRobot: 'Android 機器人',
     footer: '巨信 Cheat · 和好友即刻相連', more: '更多選項', emergency: '應急登入'
@@ -109,7 +109,7 @@ const copy = {
     realtime: 'Real-time messages', realtimeHint: 'Friends and groups sync instantly', vip: 'Black-gold VIP', vipHint: 'Exclusive identity and themes',
     native: 'Native experience', nativeHint: 'A standalone client is more stable', chooseDevice: 'Choose your device',
     officialPackage: 'Official installers · always updated', desktop: 'Desktop', windowsRequirement: 'For Windows 10 / 11 · 64-bit',
-    windowsFeature1: 'Windowed chats and groups', windowsFeature2: 'Real-time messages and file transfer', downloadWindows: 'Download Windows EXE', downloadInstaller: 'Download installer (choose path)',
+    windowsFeature1: 'Windowed chats and groups', windowsFeature2: 'Real-time messages and file transfer', downloadWindows: 'Download Windows EXE', downloadInstaller: 'Download installer (full install)',
     mobile: 'Mobile', androidRequirement: 'For Android phones and tablets', androidFeature1: 'Stay connected anywhere',
     androidFeature2: 'Voice, images and custom stickers', downloadAndroid: 'Download Android APK', androidRobot: 'Android robot',
     footer: 'JuXin Cheat · connect with friends instantly', more: 'More options', emergency: 'Emergency login'
